@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tramites y Servicios - Barrancabermeja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              tyYellow: '#ffc123',
+              tyGrey: '#333333',
+              tyLightGrey: '#f3f4f6',
+              tyLilac: '#e879f9',
+              tyPurple: '#a21caf',
+              tySoftPink: '#fdf4ff',
+              tyGreen: '#059669',
+              tyDarkGreen: '#064e3b',
+              tyMint: '#ecfdf5',
+            },
+            fontFamily: {
+              sans: ['Open Sans', 'sans-serif'],
+              heading: ['Montserrat', 'sans-serif'],
+            },
+            animation: {
+              'slide-up': 'slideUp 0.4s ease-out forwards',
+              'pop': 'pop 0.3s ease-out forwards',
+              'spin-slow': 'spin 3s linear infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes pop {
+        0% { transform: scale(0.95); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      * {
+        transition-property: background-color, border-color, color, opacity, transform;
+        transition-duration: 150ms;
+        transition-timing-function: ease-in-out;
+      }
+
+      /* Formato Carta Estricto */
+      .resume-sheet {
+        width: 215.9mm;
+        height: 279.4mm;
+        background: white;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: block;
+        page-break-after: always;
+        page-break-inside: avoid;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      }
+
+      .resume-sheet:last-child {
+        page-break-after: auto !important;
+      }
+
+      .pdf-content-wrapper {
+        width: 215.9mm;
+        margin: 0 auto;
+        background: white;
+        padding: 0;
+      }
+
+      @media print {
+        body { margin: 0; padding: 0; background: white !important; }
+        .no-print { display: none !important; }
+        .resume-sheet { box-shadow: none !important; margin: 0 !important; }
+      }
+
+      .minimal-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f9fafb;
+      }
+      
+      .dark .minimal-loader {
+        background: #030712;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.87.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="dark:bg-gray-950 bg-gray-50">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
