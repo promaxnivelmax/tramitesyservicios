@@ -44,15 +44,15 @@ export interface Reference {
 export interface PersonalInfo {
   firstName: string;
   lastName: string;
-  professionalTitle: string; // New field for the header title
-  photo?: string; // Base64 string
+  professionalTitle: string;
+  photo?: string;
   docType: DocType;
   docNumber: string;
   expeditionPlace: string;
   birthDate: string;
   birthPlace: string;
   address: string;
-  neighborhood: string; // Barrio
+  neighborhood: string;
   phone: string;
   email: string;
   city: string;
@@ -60,24 +60,28 @@ export interface PersonalInfo {
 
 export interface Attachment {
   id: string;
-  title: string; // e.g., "Antecedentes Policía"
-  image: string; // Base64 string
+  title: string;
+  image: string;
+  type: 'image' | 'pdf';
 }
 
+export type TemplatePalette = 'classic' | 'modern' | 'vibrant' | 'dark' | 'soft';
+
 export interface ResumeData {
-  id?: string; // Unique ID for persistence
+  id?: string;
   lastModified?: string;
   personal: PersonalInfo;
   education: Education[];
   hasExperience: boolean;
   experience: Experience[];
   references: Reference[];
-  attachments: Attachment[]; // New field for supports
-  templateId: 'design-a' | 'design-b' | 'design-c' | 'design-d' | 'ats' | 'design-green' | 'design-red' | 'design-orange';
+  attachments: Attachment[];
+  templateId: 'executive' | 'creative' | 'modern' | 'minimal' | 'ats';
+  palette: TemplatePalette;
 }
 
 export interface User {
-  id?: string; // Database ID
+  id?: string;
   username: string; 
   password: string; 
   resumes: ResumeData[];
@@ -104,5 +108,6 @@ export const INITIAL_DATA: ResumeData = {
   experience: [],
   references: [],
   attachments: [],
-  templateId: 'design-a'
+  templateId: 'executive',
+  palette: 'classic'
 };
