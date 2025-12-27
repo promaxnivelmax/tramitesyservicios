@@ -54,7 +54,6 @@ export const ResumeForm: React.FC<Props> = ({ initialData, onComplete, onCancel 
 
   const handleFinish = () => {
     setIsProcessing(true);
-    // Ordenamiento Cronológico Ascendente (Antiguo -> Nuevo)
     const sortedEdu = [...data.education].sort((a, b) => parseInt(a.year) - parseInt(b.year));
     const sortedExp = [...data.experience].sort((a, b) => {
         if (a.current) return 1;
@@ -80,7 +79,10 @@ export const ResumeForm: React.FC<Props> = ({ initialData, onComplete, onCancel 
     { id: 'rojo', color: 'bg-red-600' },
     { id: 'amarillo', color: 'bg-yellow-400' },
     { id: 'rosado', color: 'bg-pink-400' },
-    { id: 'negro', color: 'bg-black' }
+    { id: 'negro', color: 'bg-black' },
+    { id: 'cian', color: 'bg-cyan-500' },
+    { id: 'violeta', color: 'bg-violet-600' },
+    { id: 'lima', color: 'bg-lime-500' }
   ];
 
   return (
@@ -114,7 +116,7 @@ export const ResumeForm: React.FC<Props> = ({ initialData, onComplete, onCancel 
             {step === 1 && (
               <div className="space-y-8 animate-pop">
                   <header className="border-b pb-4 mb-6">
-                      <h2 className="text-2xl font-black text-slate-900 tracking-tight">Información de Contacto</h2>
+                      <h2 className="text-2xl font-black text-slate-900 tracking-tight">Datos Personales</h2>
                       <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Llene los datos básicos de su perfil</p>
                   </header>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -187,7 +189,7 @@ export const ResumeForm: React.FC<Props> = ({ initialData, onComplete, onCancel 
                     {data.templateId === 'neutro' && (
                         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm animate-pop">
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 text-center">Colores Disponibles para Neutro</p>
-                            <div className="flex justify-center gap-4">
+                            <div className="flex flex-wrap justify-center gap-4">
                                 {palettes.map(p => (
                                     <button 
                                         key={p.id} 

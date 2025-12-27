@@ -44,6 +44,7 @@ const MinimalLoading = () => (
 
 export default function App() {
   const [view, setView] = useState<ViewState>('LANDING');
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [currentResume, setCurrentResume] = useState<ResumeData>(INITIAL_DATA);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +77,6 @@ export default function App() {
        sessionStorage.setItem('ty_session_user', JSON.stringify(updatedUser));
        if (view === 'LANDING') setView('DASHBOARD');
     }
-    // Tiempo de carga mínimo para que el usuario perciba la acción sin ser frustrante
     setTimeout(() => setIsLoading(false), 350);
   }
 
@@ -128,6 +128,11 @@ export default function App() {
     setIsLoading(false);
   };
 
+  const handleGoToAuth = (mode: 'login' | 'register') => {
+    setAuthMode(mode);
+    setView('AUTH');
+  };
+
   if (isLoading) {
      return <MinimalLoading />;
   }
@@ -155,7 +160,7 @@ export default function App() {
                 </div>
              </button>
 
-             {currentUser && (
+             {currentUser ? (
                <div className="flex items-center gap-4 border-l pl-6 dark:border-gray-800">
                   <div className="hidden md:block text-right">
                     <p className="text-[10px] font-black uppercase text-gray-400 leading-none mb-1">Usuario Activo</p>
@@ -163,14 +168,19 @@ export default function App() {
                   </div>
                   <button onClick={handleLogout} className="text-[10px] font-black uppercase tracking-widest text-red-400 hover:text-red-600 transition p-2 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg">Salir</button>
                </div>
+             ) : (
+               <div className="flex items-center gap-3">
+                  <button onClick={() => handleGoToAuth('login')} className="text-[10px] font-black uppercase tracking-widest text-tyGrey dark:text-white hover:text-tyYellow transition">Iniciar Sesión</button>
+                  <button onClick={() => handleGoToAuth('register')} className="bg-tyYellow text-tyGrey px-4 py-2 rounded-lg font-black text-[10px] uppercase tracking-widest hover:scale-105 transition">Registro</button>
+               </div>
              )}
            </div>
         </div>
       </nav>
 
       <main className="flex-grow">
-        {view === 'LANDING' && <LandingPage onStart={() => setView('AUTH')} onLogin={() => setView('AUTH')} />}
-        {view === 'AUTH' && <Auth onLoginSuccess={handleLoginSuccess} onCancel={() => setView('LANDING')} />}
+        {view === 'LANDING' && <LandingPage onStart={() => handleGoToAuth('register')} onLogin={() => handleGoToAuth('login')} />}
+        {view === 'AUTH' && <Auth onLoginSuccess={handleLoginSuccess} onCancel={() => setView('LANDING')} initialMode={authMode} />}
         {view === 'DASHBOARD' && currentUser && (
           <Dashboard 
              user={currentUser}
@@ -190,7 +200,7 @@ export default function App() {
         {view === 'PREVIEW' && <ResumePreview data={currentResume} onEdit={() => setView('FORM')} onExit={() => setView('DASHBOARD')} />}
       </main>
 
-      {view !== 'PREVIEW' && view !== 'CERT_GEN' && view !== 'TRAINING' && <Footer />}
+      {view !== 'PREVIEW' && view !== 'CERT_GEN' && view !== 'TRAINING' && <Footer onGoToTraining={() => setView('TRAINING')} />}
     </div>
   );
 }

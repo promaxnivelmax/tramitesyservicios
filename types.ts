@@ -58,7 +58,7 @@ export interface PersonalInfo {
   city: string;
 }
 
-export type NeutralPalette = 'verde' | 'naranja' | 'rojo' | 'amarillo' | 'rosado' | 'negro';
+export type NeutralPalette = 'verde' | 'naranja' | 'rojo' | 'amarillo' | 'rosado' | 'negro' | 'cian' | 'violeta' | 'lima';
 
 export interface ResumeData {
   id?: string;
