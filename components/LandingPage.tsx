@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { FileText, MapPin, CheckCircle, ChevronRight, PenTool, UserCircle, Sparkles, ShieldCheck, Zap, ArrowUpRight, Globe, Star } from 'lucide-react';
+import { MapPin, ChevronRight, Star, Sparkles, Send, Phone, Mail, Building2, MousePointer2, Zap, Layout, FileText, Globe } from 'lucide-react';
 
 interface Props {
   onStart: () => void;
@@ -9,212 +9,168 @@ interface Props {
 
 export const LandingPage: React.FC<Props> = ({ onStart, onLogin }) => {
   return (
-    <div className="bg-tyGrey text-white selection:bg-tyYellow selection:text-tyGrey">
+    <div className="bg-white text-slate-900 selection:bg-tyYellow selection:text-tyGrey font-sans">
       {/* Dynamic Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden mesh-gradient">
-        {/* Floating Background Icons */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-            <div className="absolute top-1/4 left-1/4 animate-float blur-sm"><FileText size={120} className="text-tyYellow" /></div>
-            <div className="absolute bottom-1/4 right-1/4 animate-float blur-md" style={{ animationDelay: '2s' }}><Zap size={180} className="text-white" /></div>
-            <div className="absolute top-1/2 right-1/3 animate-pulse-slow"><Star size={60} className="text-tyYellow" /></div>
+      <section className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-[#0f172a]">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tyYellow rounded-full blur-[180px] -translate-y-1/2 translate-x-1/3"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/4"></div>
         </div>
 
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 space-y-10 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full border border-white/10 text-sm font-semibold tracking-wide">
-                <span className="flex h-2 w-2 rounded-full bg-tyYellow animate-ping"></span>
-                <span className="text-tyYellow">Impulsa tu carrera hoy</span>
+              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-xs font-black text-tyYellow shadow-xl backdrop-blur-md uppercase tracking-[0.3em] animate-pulse">
+                <Zap size={14} /> Tu Futuro Empieza Aquí
               </div>
               
-              <h1 className="text-5xl md:text-8xl font-black leading-tight tracking-tighter">
-                Diseña tu futuro <br/>
-                <span className="text-gradient">profesional.</span>
+              <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter text-white">
+                Tramita con <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-tyYellow via-amber-400 to-yellow-200">Poder.</span>
               </h1>
               
-              <p className="text-xl text-gray-400 max-w-2xl font-medium leading-relaxed">
-                La plataforma inteligente para <span className="text-white">Barrancabermeja</span>. Crea, gestiona y descarga documentos laborales con estándares internacionales en segundos.
+              <p className="text-xl text-slate-400 max-w-xl font-medium leading-relaxed">
+                Diseñamos herramientas digitales para que el trabajador de <span className="text-white font-black underline decoration-tyYellow decoration-4 underline-offset-4">Barrancabermeja</span> sea el primero en la lista. Hojas de vida, certificados y capacitación en un solo lugar.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 pt-6">
                 <button 
                   onClick={onLogin}
-                  className="w-full sm:w-auto bg-tyYellow text-tyGrey font-black text-lg px-10 py-5 rounded-2xl shadow-[0_20px_50px_rgba(255,193,35,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
+                  className="w-full sm:w-auto bg-tyYellow text-tyGrey font-black text-xl px-12 py-6 rounded-[2rem] shadow-[0_0_30px_rgba(255,193,35,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-4 group"
                 >
-                  <UserCircle size={24} /> 
-                  Empezar ahora
-                  <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  Crear Mi Hoja de Vida
+                  <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform" />
                 </button>
-                <div className="flex items-center gap-4 text-sm font-bold text-gray-400">
-                    <div className="flex -space-x-3">
-                        {[1,2,3,4].map(i => (
-                            <div key={i} className="w-10 h-10 rounded-full border-2 border-tyGrey bg-slate-800 flex items-center justify-center overflow-hidden">
-                                <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" />
-                            </div>
-                        ))}
-                    </div>
-                    <p>+2.5k usuarios activos</p>
-                </div>
               </div>
             </div>
             
-            <div className="flex-1 relative lg:block hidden">
-                <div className="absolute -inset-10 bg-tyYellow/20 blur-[120px] rounded-full"></div>
-                <div className="relative z-10 transform hover:rotate-2 transition-transform duration-700">
-                    <div className="glass p-4 rounded-[2.5rem] border border-white/10 shadow-2xl">
-                        <div className="bg-white rounded-[2rem] p-8 space-y-6 text-tyGrey">
-                            <div className="flex items-center justify-between">
-                                <div className="flex gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                                    <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                                </div>
-                                <div className="px-3 py-1 bg-tyGrey text-white rounded-full text-[10px] font-black uppercase tracking-widest">Premium Template</div>
-                            </div>
-                            <div className="flex gap-6 items-center">
-                                <div className="w-24 h-24 bg-slate-100 rounded-2xl flex items-center justify-center"><UserCircle size={48} className="text-slate-300" /></div>
-                                <div className="space-y-2 flex-1">
-                                    <div className="h-4 w-3/4 bg-slate-200 rounded"></div>
-                                    <div className="h-3 w-1/2 bg-slate-100 rounded"></div>
-                                </div>
-                            </div>
-                            <div className="space-y-4 pt-4">
-                                <div className="h-2 w-full bg-slate-50 rounded"></div>
-                                <div className="h-2 w-full bg-slate-50 rounded"></div>
-                                <div className="h-2 w-5/6 bg-slate-50 rounded"></div>
-                                <div className="grid grid-cols-2 gap-4 mt-8">
-                                    <div className="h-24 bg-tyYellow/10 rounded-2xl border-2 border-dashed border-tyYellow/30 flex items-center justify-center flex-col gap-2">
-                                        <ShieldCheck size={24} className="text-tyYellow" />
-                                        <span className="text-[10px] font-black uppercase">Verificado</span>
-                                    </div>
-                                    <div className="h-24 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center flex-col gap-2">
-                                        <Zap size={24} className="text-slate-300" />
-                                        <span className="text-[10px] font-black uppercase opacity-20">Soporte</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            {/* Service Showcase Visual */}
+            <div className="flex-1 relative lg:block hidden h-[600px]">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-tyYellow/10 rounded-full blur-3xl"></div>
+                
+                {/* Floating Service Cards */}
+                <div className="absolute top-10 right-10 w-64 p-6 bg-white rounded-3xl shadow-2xl animate-float border-b-8 border-tyYellow">
+                    <FileText className="text-tyYellow mb-4" size={32} />
+                    <h4 className="font-black text-tyGrey uppercase text-sm">Hojas de Vida</h4>
+                    <p className="text-xs text-slate-400 font-bold">Diseño Premium Exportable</p>
+                </div>
+
+                <div className="absolute bottom-20 left-0 w-64 p-6 bg-slate-900 rounded-3xl shadow-2xl animate-float border-b-8 border-blue-500" style={{ animationDelay: '1s' }}>
+                    <Globe className="text-blue-500 mb-4" size={32} />
+                    <h4 className="font-black text-white uppercase text-sm">Certificados</h4>
+                    <p className="text-xs text-slate-500 font-bold">Antecedentes al instante</p>
+                </div>
+
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 p-6 bg-white rounded-3xl shadow-2xl animate-float border-b-8 border-green-500" style={{ animationDelay: '2s' }}>
+                    <Layout className="text-green-500 mb-4" size={32} />
+                    <h4 className="font-black text-tyGrey uppercase text-sm">Documentos</h4>
+                    <p className="text-xs text-slate-400 font-bold">Cartas de Referencia Pro</p>
                 </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid "Bento Style" */}
-      <section className="py-32 bg-slate-950 relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-7xl">
+      {/* Modern Features Section */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
             <div className="text-center mb-24 space-y-4">
-                <h2 className="text-sm font-black text-tyYellow uppercase tracking-[0.4em]">Nuestro Ecosistema</h2>
-                <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter">Todo lo que necesitas para <br/> tu próxima gran oportunidad.</h3>
+                <h2 className="text-4xl md:text-6xl font-black text-tyGrey tracking-tighter">Servicio Digital <span className="text-tyYellow">Sin Complicaciones</span></h2>
+                <div className="w-24 h-2 bg-tyYellow mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full md:h-[600px]">
-                {/* CV Card */}
-                <div className="md:col-span-8 glass rounded-[3rem] p-12 flex flex-col justify-between group hover:border-tyYellow/50 transition-all cursor-pointer overflow-hidden relative">
-                    <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-tyYellow/20 blur-[80px] rounded-full group-hover:bg-tyYellow/40 transition-all"></div>
-                    <div className="space-y-4 relative z-10">
-                        <div className="bg-tyYellow text-tyGrey w-14 h-14 rounded-2xl flex items-center justify-center"><FileText size={32} /></div>
-                        <h4 className="text-4xl font-black">Hojas de Vida Inteligentes</h4>
-                        <p className="text-gray-400 max-w-md text-lg">Más de 5 plantillas exclusivas estilo Canva diseñadas para captar la atención de reclutadores en milisegundos.</p>
-                    </div>
-                    <div className="flex items-center gap-4 pt-8">
-                        <span className="text-tyYellow font-black uppercase text-sm tracking-widest">Explorar plantillas</span>
-                        <ArrowUpRight className="text-tyYellow" />
-                    </div>
-                </div>
-
-                {/* Cert Card */}
-                <div className="md:col-span-4 bg-tyYellow rounded-[3rem] p-12 flex flex-col justify-between text-tyGrey group hover:scale-[1.02] transition-transform cursor-pointer">
-                    <div className="space-y-4">
-                        <div className="bg-tyGrey text-white w-14 h-14 rounded-2xl flex items-center justify-center"><PenTool size={32} /></div>
-                        <h4 className="text-3xl font-black leading-none">Generador de Soportes</h4>
-                    </div>
-                    <p className="font-bold text-tyGrey/60">Cartas de recomendación, certificaciones y renuncias automáticas.</p>
-                    <div className="flex justify-end"><ArrowUpRight size={32} /></div>
-                </div>
-
-                {/* Stats Card */}
-                <div className="md:col-span-5 glass rounded-[3rem] p-10 flex items-center gap-8 group">
-                    <div className="text-5xl font-black text-tyYellow group-hover:scale-110 transition-transform tracking-tighter">98%</div>
-                    <div className="space-y-1">
-                        <p className="text-white font-bold">Índice de Aceptación</p>
-                        <p className="text-sm text-gray-500 font-medium">Documentos bajo normativa técnica.</p>
-                    </div>
-                </div>
-
-                {/* Links Card */}
-                <div className="md:col-span-7 bg-white rounded-[3rem] p-10 flex items-center justify-between text-tyGrey group cursor-pointer hover:bg-slate-50 transition-colors">
-                    <div className="flex items-center gap-6">
-                        <div className="bg-slate-100 p-4 rounded-2xl"><Globe size={32} /></div>
-                        <div>
-                            <p className="text-xl font-black">Central de Trámites</p>
-                            <p className="text-sm font-medium text-slate-400">Policía, Procuraduría y EPS en un clic.</p>
-                        </div>
-                    </div>
-                    <ArrowUpRight size={24} className="opacity-0 group-hover:opacity-100 transition-all" />
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <FeatureCard 
+                    icon={<MousePointer2 size={32} />}
+                    title="Control Total"
+                    desc="Edita tus datos en cualquier momento. Tu perfil vive en la nube, siempre listo para el próximo empleo."
+                    color="bg-tyYellow"
+                />
+                <FeatureCard 
+                    icon={<Building2 size={32} />}
+                    title="ADN Industrial"
+                    desc="Nuestros formatos están pensados para el sector petrolero y comercial de la región. Directo al grano."
+                    color="bg-blue-500 text-white"
+                />
+                <FeatureCard 
+                    icon={<Sparkles size={32} />}
+                    title="Calidad 4K"
+                    desc="Descargas en PDF de alta resolución. Olvida los documentos borrosos o mal centrados."
+                    color="bg-slate-900 text-white"
+                />
             </div>
         </div>
       </section>
 
-      {/* City Section - Artistic */}
-      <section className="py-32 bg-white text-tyGrey relative overflow-hidden">
+      {/* Where are we located? */}
+      <section className="py-32 bg-slate-50">
         <div className="container mx-auto px-6 max-w-7xl">
-            <div className="flex flex-col lg:flex-row items-center gap-20">
-                <div className="flex-1 space-y-8 order-2 lg:order-1">
-                    <div className="w-12 h-1.5 bg-tyYellow mb-10"></div>
-                    <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] text-tyGrey">
-                        Potencia el <br/> talento del <br/> <span className="text-tyYellow">Puerto.</span>
-                    </h2>
-                    <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-lg">
-                        Barrancabermeja es una ciudad de oportunidades. Nuestra misión es que ningún perfil talentoso se pierda por una mala presentación documental.
-                    </p>
-                    <div className="flex gap-10 pt-6">
-                        <div>
-                            <p className="text-4xl font-black text-tyGrey leading-none">Distrito</p>
-                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-2">Especial</p>
-                        </div>
-                        <div className="w-px h-16 bg-slate-100"></div>
-                        <div>
-                            <p className="text-4xl font-black text-tyGrey leading-none">100%</p>
-                            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-2">Barranqueño</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="flex-1 order-1 lg:order-2">
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-tyYellow rounded-[4rem] rotate-3 opacity-10"></div>
-                        <div className="relative rounded-[3rem] overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
-                             <img src="https://img.lalr.co/cms/2023/10/18143930/Barrancabermeja.jpg?size=xl" alt="Barrancabermeja" className="w-full h-[600px] object-cover scale-110 hover:scale-100 transition-transform duration-[2s]" />
-                             <div className="absolute inset-0 bg-gradient-to-t from-tyGrey/80 to-transparent flex items-end p-12">
-                                <div className="text-white">
-                                    <p className="text-sm font-black uppercase tracking-[0.5em] mb-2 opacity-60">Barrancabermeja</p>
-                                    <p className="text-4xl font-black">Santander, Colombia</p>
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                </div>
+            <h2 className="text-4xl font-black text-center mb-16 uppercase tracking-tighter">Nuestros Puntos de <span className="text-tyYellow">Atención</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <LocationCard 
+                    title="Internet la 52"
+                    address="Calle 52 # 18-34, La 52"
+                    city="Barrancabermeja, Santander"
+                    phone="+57 305 231 9414"
+                />
+                <LocationCard 
+                    title="Sector Comercial (Laura)"
+                    address="Calle 51 # 5-15, Sector Comercial"
+                    city="Barrancabermeja, Santander"
+                    phone="+57 305 224 5939"
+                />
             </div>
         </div>
       </section>
 
-      {/* Trust Footer CTA */}
-      <section className="py-24 bg-tyYellow text-tyGrey text-center">
-        <div className="container mx-auto px-6 max-w-4xl space-y-10">
-            <h4 className="text-4xl md:text-6xl font-black tracking-tighter">¿Listo para dar el siguiente paso en tu carrera?</h4>
-            <button 
-                onClick={onLogin}
-                className="bg-tyGrey text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-black transition-all shadow-2xl flex items-center gap-4 mx-auto group"
-            >
-                Empezar Gratuitamente 
-                <Zap size={24} className="fill-tyYellow text-tyYellow group-hover:scale-125 transition-transform" />
-            </button>
-            <p className="text-sm font-bold opacity-40 uppercase tracking-widest">No se requiere tarjeta de crédito</p>
+      {/* Contact Form */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6 max-w-3xl">
+            <div className="bg-slate-900 rounded-[3rem] p-12 md:p-16 shadow-3xl text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-tyYellow rounded-bl-full opacity-10"></div>
+                
+                <h2 className="text-4xl font-black mb-4 text-center">¿Tienes Dudas?</h2>
+                <p className="text-slate-400 text-center mb-12 font-bold uppercase tracking-widest text-xs">Escríbenos y te responderemos en minutos</p>
+                
+                <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input placeholder="Nombre Completo" className="bg-white/5 border border-white/10 p-4 rounded-2xl w-full focus:ring-2 focus:ring-tyYellow focus:bg-white/10 transition outline-none" />
+                        <input placeholder="WhatsApp" className="bg-white/5 border border-white/10 p-4 rounded-2xl w-full focus:ring-2 focus:ring-tyYellow focus:bg-white/10 transition outline-none" />
+                    </div>
+                    <textarea placeholder="¿En qué podemos ayudarte?" rows={4} className="bg-white/5 border border-white/10 p-4 rounded-2xl w-full focus:ring-2 focus:ring-tyYellow focus:bg-white/10 transition outline-none"></textarea>
+                    <button className="w-full bg-tyYellow text-tyGrey py-5 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-105 transition shadow-2xl">
+                        Enviar Mensaje <Send size={20} />
+                    </button>
+                </form>
+            </div>
         </div>
       </section>
     </div>
   );
 };
+
+const FeatureCard = ({ icon, title, desc, color }: any) => (
+    <div className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4">
+        <div className={`w-16 h-16 ${color} rounded-3xl flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform`}>
+            {icon}
+        </div>
+        <h3 className="text-2xl font-black mb-4 text-tyGrey tracking-tight">{title}</h3>
+        <p className="text-slate-500 font-medium leading-relaxed">{desc}</p>
+    </div>
+);
+
+const LocationCard = ({ title, address, city, phone }: any) => (
+    <div className="bg-white p-8 rounded-[2rem] border-l-8 border-tyYellow shadow-xl flex items-start gap-6 hover:scale-[1.02] transition">
+        <div className="bg-yellow-50 p-4 rounded-2xl text-tyYellow">
+            <MapPin size={32} />
+        </div>
+        <div>
+            <h3 className="text-xl font-black mb-2 text-tyGrey">{title}</h3>
+            <p className="text-slate-500 font-bold text-sm mb-1">{address}</p>
+            <p className="text-slate-400 text-xs mb-4 uppercase font-black">{city}</p>
+            <div className="flex items-center gap-2 text-tyYellow font-black text-sm">
+                <Phone size={16} /> {phone}
+            </div>
+        </div>
+    </div>
+);

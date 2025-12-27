@@ -58,14 +58,7 @@ export interface PersonalInfo {
   city: string;
 }
 
-export interface Attachment {
-  id: string;
-  title: string;
-  image: string;
-  type: 'image' | 'pdf';
-}
-
-export type TemplatePalette = 'classic' | 'modern' | 'vibrant' | 'dark' | 'soft';
+export type NeutralPalette = 'verde' | 'naranja' | 'rojo' | 'amarillo' | 'rosado' | 'negro';
 
 export interface ResumeData {
   id?: string;
@@ -75,9 +68,8 @@ export interface ResumeData {
   hasExperience: boolean;
   experience: Experience[];
   references: Reference[];
-  attachments: Attachment[];
-  templateId: 'executive' | 'creative' | 'modern' | 'minimal' | 'ats';
-  palette: TemplatePalette;
+  templateId: 'masculino' | 'femenino' | 'ats' | 'neutro';
+  neutralPalette?: NeutralPalette;
 }
 
 export interface User {
@@ -107,7 +99,6 @@ export const INITIAL_DATA: ResumeData = {
   hasExperience: false,
   experience: [],
   references: [],
-  attachments: [],
-  templateId: 'executive',
-  palette: 'classic'
+  templateId: 'masculino',
+  neutralPalette: 'negro'
 };
